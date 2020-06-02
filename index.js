@@ -22,9 +22,10 @@ async function main() {
 
   function current() {
     return `
-    currentClock ${getCurrentClock()}
-    currentVolts ${getCurrentVolts()}
-    currentTemp ${getCurrentTemp()}
+currentClock ${getCurrentClock()}
+currentVolts ${getCurrentVolts()}
+currentTemp ${getCurrentTemp()}
+bootloader ${getBootloaderVersion()}
     `
   }
 }
@@ -43,4 +44,8 @@ function getCurrentTemp() {
   return cp.execSync('vcgencmd measure_temp')
     .toString('utf8')
     .match(/\=(.*)/)[1]
+}
+function getBootloaderVersion() {
+  return cp.execSync('vcgencmd bootloader_version')
+    .toString('utf8')
 }
