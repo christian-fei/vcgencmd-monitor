@@ -1,0 +1,13 @@
+{
+  "name": "vcgencmd-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0",
+    "start": "node $npm_package_main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
