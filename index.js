@@ -22,7 +22,19 @@ async function main() {
 
   function current() {
     return `
-currentClock ${getCurrentClock()}
+# Clocks
+arm clock ${measureClock('arm')}
+core clock ${measureClock('core')}
+h264 clock ${measureClock('h264')}
+isp clock ${measureClock('isp')}
+v3d clock ${measureClock('v3d')}
+uart clock ${measureClock('uart')}
+pwm clock ${measureClock('pwm')}
+emmc clock ${measureClock('emmc')}
+pixel clock ${measureClock('pixel')}
+hdmi clock ${measureClock('hdmi')}
+dpi clock ${measureClock('dpi')}
+
 currentVolts ${getCurrentVolts()}
 currentTemp ${getCurrentTemp()}
 bootloader ${getBootloaderVersion()}
@@ -30,8 +42,8 @@ bootloader ${getBootloaderVersion()}
   }
 }
 
-function getCurrentClock() {
-  return +cp.execSync('vcgencmd measure_clock arm')
+function measureClock(clock = 'arm') {
+  return +cp.execSync(`vcgencmd measure_clock ${clock}`)
     .toString('utf8')
     .match(/\=(\d+)/)[1]
 }
